@@ -2,26 +2,21 @@ import java.awt.*;
 import javax.swing.*;
 
 public class GUI {
-    /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event-dispatching thread.
-     */
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("Java Window");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
-        JLabel emptyLabel = new JLabel("");
-        emptyLabel.setPreferredSize(new Dimension(300, 300));
-        frame.getContentPane().add(emptyLabel, BorderLayout.EAST);
+        JFrame f = new JFrame("Java Window");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setResizable(true);
+        f.setLocation(600, 200);
 
-        frame.add(new JLabel("Hello World"), BorderLayout.CENTER);        
-        frame.add(new JLabel("index.jpg"), BorderLayout.WEST);
+        //Add the compontents
+        f.add(new JLabel("Dog.jpeg"), BorderLayout.LINE_END);
+        f.add(new JLabel("Hello World"), BorderLayout.PAGE_START);
+        f.add(new JButton("Click Me!"), BorderLayout.CENTER);
 
         //Display the window.
-        frame.pack();
-        frame.setVisible(true);
+        f.setSize(500,500);//This is to set size, could use f.pack() instead
+        f.setVisible(true);
     }
  
     public static void main(String[] args) {
@@ -32,5 +27,4 @@ public class GUI {
                 createAndShowGUI();
             }
         });
-    }
-}
+}}
