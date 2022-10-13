@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class GUI {
@@ -9,13 +10,35 @@ public class GUI {
         f.setResizable(true);
         f.setLocation(0,0);
 
-        //Add the compontents
-        f.add(new JLabel(new ImageIcon("Dog.jpeg")), BorderLayout.PAGE_START);
-        f.add(new JButton("Click Me!"), BorderLayout.CENTER);
+        //Dog Image
+        JLabel DogImage = new JLabel(new ImageIcon("Dog.jpeg"));
+        f.add(DogImage, BorderLayout.PAGE_START);
+
+        //Text Label
+        JLabel Label = new JLabel("Pre-Button");
+        f.add(Label, BorderLayout.PAGE_END);
+
+        //Button 1
+        JButton Button = new JButton("Dog 1");
+        Button.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Label.setText("Post-Button");
+                DogImage.setIcon(new ImageIcon("Dog2.jpeg"));
+            }});
+        f.add(Button, BorderLayout.EAST);
+
+        //Button 2
+        JButton Button2 = new JButton("Dog 2");
+        Button2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Label.setText("Pre-Button");
+                DogImage.setIcon(new ImageIcon("Dog.jpeg"));
+            }});
+        f.add(Button2, BorderLayout.WEST);
 
         //Display the window.
-        //f.setSize(500,500);//This is to set size, could use f.pack() instead
-        f.pack();
+        f.setSize(500,500);
+        //f.pack();
         f.setVisible(true);
     }
 
